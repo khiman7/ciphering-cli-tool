@@ -13,6 +13,31 @@ const availableOptions = {
   },
 };
 
+const algorithms = {
+  caesar: {
+    alias: 'C',
+    name: 'caesar',
+  },
+  rot8: {
+    alias: 'R',
+    name: 'rot8',
+  },
+  atbash: {
+    alias: 'A',
+    name: 'atbash',
+  },
+};
+
+const [UPPER_A_CODE, UPPER_Z_CODE] = [65, 90];
+const [LOWER_A_CODE, LOWER_Z_CODE] = [97, 122];
+const ALPHABET_LENGTH = 26;
+
 module.exports = { 
   availableOptions,
+  algorithms,
+  UPPER_A_CODE,
+  UPPER_Z_CODE,
+  LOWER_A_CODE,
+  LOWER_Z_CODE,
+  ALPHABET_LENGTH,
 };
