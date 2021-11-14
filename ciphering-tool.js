@@ -2,6 +2,7 @@ const fs = require('fs');
 const { pipeline } = require('stream');
 
 const parseArguments = require('./src/helpers/parseArguments');
+const { ReadFileStream, WriteFileStream } = require('./src/customStreams');
 const StreamEncryptor = require('./src/streamEncryptor');
 const { validateConfig } = require('./src/helpers/validators');
 const {
@@ -48,11 +49,11 @@ try {
   !inputPath && process.stdout.write('Enter the text you want to encrypt: \n');
   pipeline(
     inputPath
-      ? fs.createReadStream(inputPath)
+      ? new ReadFileStream(inputPath)
       : process.stdin,
     ...streamEncryptors,
     outputPath
-      ? fs.createWriteStream(outputPath, { flags: 'a' })
+      ? new WriteFileStream(outputPath)
       : process.stdout,
     () => process.stdout.write('Cyphering succeeded.')
   );
