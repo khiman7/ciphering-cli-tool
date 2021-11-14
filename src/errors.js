@@ -17,8 +17,8 @@ class NotValidConfigError extends Error {
     super(
       `Config you provided "${config}" is not valid\n`
       + 'Config should be a string with pattern {XY(-)}n\n'
-      + '- X is a cipher mark (C, R or A)\n'
-      + '- Y is a flag of encoding and decoding (0 or 1)\n'
+      + '\t- X is a cipher mark (C, R or A)\n'
+      + '\t- Y is a flag of encoding and decoding (0 or 1)\n'
       + 'e.g. - "C1-C1-R0-A-C1"'
     );
     this.name = this.constructor.name;
@@ -27,7 +27,7 @@ class NotValidConfigError extends Error {
 
 class FileDoesNotExistError extends Error {
   constructor(pathname) {
-    super(`File ${pathname} doesn't exist`);
+    super(`File "${pathname}" doesn't exist`);
     this.name = this.constructor.name;
   }
 }
@@ -37,8 +37,8 @@ class MissingConfigArgumentError extends Error {
     super(
       'Missing required config argument\n'
       + 'Config should be a string with pattern {XY(-)}n\n'
-      + '- X is a cipher mark (C, R or A)\n'
-      + '- Y is a flag of encoding and decoding (0 or 1)\n'
+      + '\t- X is a cipher mark (C, R or A)\n'
+      + '\t- Y is a flag of encoding and decoding (0 or 1)\n'
       + 'e.g. - "C1-C1-R0-A-C1"'
     );
     this.name = this.constructor.name;
@@ -50,9 +50,9 @@ class NotValidAlgorithmError extends Error {
     super(
       `Wrong algorithm name provided: ${algorithm}\n`
       + 'Available algorithms:\n'
-      + '"caesar" - Caesar cipher (with shift 1)\n'
-      + '"rot8" - ROT-8 cipher\n'
-      + '"atbash" - Atbash cipher\n'
+      + '\t"caesar" - Caesar cipher (with shift 1)\n'
+      + '\t"rot8" - ROT-8 cipher\n'
+      + '\t"atbash" - Atbash cipher\n'
     );
     this.name = this.constructor.name;
   }

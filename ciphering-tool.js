@@ -9,7 +9,7 @@ const {
   FileDoesNotExistError,
   MissingConfigArgumentError,
 } = require('./src/errors');
-const { algorithms } = require('./src/constants');
+const { ENCRYPTION_ALGORITHMS } = require('./src/constants');
 
 try {
   const args = parseArguments();
@@ -37,7 +37,7 @@ try {
 
   const streamEncryptors = config.split('-').map((cypher) => {
     const [alias, number] = cypher.split('');
-    const algorithm = Object.values(algorithms).find(
+    const algorithm = Object.values(ENCRYPTION_ALGORITHMS).find(
       (alg) => alg.alias === alias
     ).name;
     const mode = number === '1' ? 'enc' : 'dec';
@@ -45,27 +45,17 @@ try {
     return StreamEncryptor.create(algorithm, mode);
   });
 
-  if (!inputPath) {
-    process.stdout.write('Enter a text you want to encode: \n');
-    pipeline(
-      process.stdin,
-      ...streamEncryptors,
-      outputPath
-        ? fs.createWriteStream(outputPath, { flags: 'a' })
-        : process.stdout,
-      () => process.stdout.write('Cyphering succeeded.')
-    );
-  } else {
-    const rstream = fs.createReadStream(inputPath);
-    pipeline(
-      rstream,
-      ...streamEncryptors,
-      outputPath
-        ? fs.createWriteStream(outputPath, { flags: 'a' })
-        : process.stdout,
-      () => process.stdout.write('Cyphering succeeded.')
-    );
-  }
+  !inputPath && process.stdout.write('Enter the text you want to encrypt: \n');
+  pipeline(
+    inputPath
+      ? fs.createReadStream(inputPath)
+      : process.stdin,
+    ...streamEncryptors,
+    outputPath
+      ? fs.createWriteStream(outputPath, { flags: 'a' })
+      : process.stdout,
+    () => process.stdout.write('Cyphering succeeded.')
+  );
 } catch (error) {
   process.stderr.write(error.message);
   process.exit(1);

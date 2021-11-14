@@ -1,5 +1,5 @@
 const { DuplicateArgumentsError } = require('../errors');
-const { availableOptions } = require('../constants');
+const { OPTIONS } = require('../constants');
 
 const parseArguments = () => {
   const args = process.argv.slice(2);
@@ -10,7 +10,7 @@ const parseArguments = () => {
      * If the option is an available option, check for duplicates
      * including short and full name (e.g. 'c' and 'config').
      */
-    const availableOption = Object.values(availableOptions).find(
+    const availableOption = Object.values(OPTIONS).find(
       (opt) => opt.alias === option || opt.fullName === option
     );
 

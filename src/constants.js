@@ -1,4 +1,4 @@
-const availableOptions = {
+const OPTIONS = {
   config: {
     alias: 'c',
     fullName: 'config',
@@ -13,7 +13,7 @@ const availableOptions = {
   },
 };
 
-const algorithms = {
+const ENCRYPTION_ALGORITHMS = {
   caesar: {
     alias: 'C',
     name: 'caesar',
@@ -33,8 +33,8 @@ const [LOWER_A_CODE, LOWER_Z_CODE] = [97, 122];
 const ALPHABET_LENGTH = 26;
 
 module.exports = { 
-  availableOptions,
-  algorithms,
+  OPTIONS,
+  ENCRYPTION_ALGORITHMS,
   UPPER_A_CODE,
   UPPER_Z_CODE,
   LOWER_A_CODE,

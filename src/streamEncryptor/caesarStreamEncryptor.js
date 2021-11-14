@@ -56,7 +56,7 @@ class CaesarStreamEncryptor extends Transform {
 
           if (code >= LOWER_A_CODE && code <= LOWER_Z_CODE) {
             return (
-              ((code - LOWER_A_CODE + (25)) %
+              ((code - LOWER_A_CODE + (-SHIFT + ALPHABET_LENGTH)) %
                 ALPHABET_LENGTH) +
               LOWER_A_CODE
             );
