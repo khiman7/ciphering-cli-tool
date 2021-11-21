@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "Kyrylo Khiman",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "jest": "^27.3.1"
+  }
 }
