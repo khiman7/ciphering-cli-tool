@@ -46,7 +46,7 @@ try {
     return StreamEncryptor.create(algorithm, mode);
   });
 
-  !inputPath && process.stdout.write('Enter the text you want to encrypt: \n');
+  //!inputPath && process.stdout.write('Enter the text you want to encrypt: \n');
   pipeline(
     inputPath
       ? new ReadFileStream(inputPath)
