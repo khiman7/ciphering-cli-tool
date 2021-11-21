@@ -1,0 +1,12 @@
+{
+  "name": "ciphering-cli-tool",
+  "version": "1.0.0",
+  "description": "Tool for ciphering text with three algorithms: Caesar, ROT-8 and Atbash",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kyrylo Khiman",
+  "license": "ISC"
+}
