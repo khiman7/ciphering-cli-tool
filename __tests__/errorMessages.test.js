@@ -1,13 +1,12 @@
 const path = require('path');
 const { spawn } = require('child_process');
 
-const { MissingConfigArgumentError } = require('../src/errors');
-
 const testErrorMessage = (args, regex) => {
   const filePath = path.join(__dirname, '../ciphering-tool.js');
   const testApp = spawn(
       'node', [filePath, ...args]
     );
+
   let errorMessage = '';
 
   testApp.stderr.on('data', data => {
